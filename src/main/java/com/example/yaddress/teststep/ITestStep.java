@@ -1,6 +1,7 @@
 package com.example.yaddress.teststep;
 
 import com.example.yaddress.testcase.TestCaseData;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author yevgen.ulyanenkov
@@ -14,7 +15,15 @@ public interface ITestStep {
      * </>
      * @param testCaseData Instance of @TestCaseData
      */
-    void getRequestAndVerifyResponse(TestCaseData testCaseData);
+    default void getRequestAndVerifyResponse(TestCaseData testCaseData){
+        if ("XML".equals(StringUtils.upperCase(System.getProperty("contentType")))) {
+            // contentType = XML
+            getRequestAndVerifyXmlResponse(testCaseData);
+        } else {
+            // else default = JSON
+            getRequestAndVerifyJsonResponse(testCaseData);
+        }
+    }
 
 
     /**

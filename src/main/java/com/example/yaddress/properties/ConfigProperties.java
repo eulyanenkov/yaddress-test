@@ -1,16 +1,15 @@
 package com.example.yaddress.properties;
 
-import lombok.Data;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * @author yevgen.ulyanenkov
  * @since 22.09.2020
  */
 @Getter
-@Configuration
+@Component
 public class ConfigProperties {
 
     @Value("${yaddress.url}")
